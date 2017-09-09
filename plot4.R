@@ -7,7 +7,7 @@ header <- as.vector(read.table("household_power_consumption.txt", sep = ";", hea
 #assign the header to the subset data
 colnames(epc) <- colnames(header)
 
-#creating new variable by combining variable Date and Time to be a PosixIt type)
+#creating new variable by combining variable Date and Time to be a posixlt type)
 epc$newtime <- strptime(paste(epc$Date, epc$Time), "%d/%m/%Y%H:%M:%S")
 
 #open the device png and set dimension
@@ -22,7 +22,7 @@ par(mfrow = c(2,2))
 #3. Energy sub metering 1,2,3 vs time
 #$. Global reactive power vs time
 with (epc,{
-  plot(newtime, Global_active_power, type = "l", xlab = "", ylab = "Global Active Power (kilowatts)")
+  plot(newtime, Global_active_power, type = "l", xlab = "", ylab = "Global Active Power")
   plot(newtime, Voltage, type = "l", xlab = "datetime", ylab = "Voltage")
   plot(newtime, Sub_metering_1, type ="l", ylab = "Energy sub metering", xlab = "" )
   lines(newtime, Sub_metering_2, col ="red", type ="l")
